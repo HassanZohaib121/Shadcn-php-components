@@ -1,5 +1,5 @@
 <?php
-function renderDialog($id = "myDialog", $title = "", $description = "", $content = "", $footer = "") {
+function renderDialog($id = "myDialog", $title = "", $description = "", $content = "", $footer = "", $class = '') {
     return <<<HTML
 <div>
   <div id="$id" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50" data-slot="dialog-overlay">

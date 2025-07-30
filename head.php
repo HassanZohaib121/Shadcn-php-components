@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Reusable Button Demo</title>
   <link rel="stylesheet" href="output.css">
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
   <script>
     function sayHello() {
       alert('Hello from the button!');
