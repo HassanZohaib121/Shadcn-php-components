@@ -28,7 +28,7 @@
 
 ?>
 
-    <h1 class="text-3xl font-bold text-center mb-5">Shadcn PHP Components</h1>
+    <h1 class="text-3xl font-bold text-center mb-5">PHP Components</h1>
 
     <!-- Button -->
     <div class="flex flex-col justify-center items-center align-middle gap-3 mb-5">
