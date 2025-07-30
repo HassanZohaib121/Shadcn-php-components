@@ -11,7 +11,7 @@
                     'href' => '',
                     'class' => 'text-gray-700 hover:text-blue-600 transition px-4 py-2 relative group cursor-pointer',
                     'submenu' => [
-                        ['label' => 'Catd', 'href' => $path_to_root.'card', 'class' => 'block px-4 py-2 text-sm text-gray-600 hover:bg-gray-100'],
+                        ['label' => 'Card', 'href' => $path_to_root.'card', 'class' => 'block px-4 py-2 text-sm text-gray-600 hover:bg-gray-100'],
                         ['label' => 'Button', 'href' => $path_to_root.'button', 'class' => 'block px-4 py-2 text-sm text-gray-600 hover:bg-gray-100'],
                         ['label' => 'Badge', 'href' => $path_to_root.'badge', 'class' => 'block px-4 py-2 text-sm text-gray-600 hover:bg-gray-100'],
                         ['label' => 'Input', 'href' => $path_to_root.'input', 'class' => 'block px-4 py-2 text-sm text-gray-600 hover:bg-gray-100'],
