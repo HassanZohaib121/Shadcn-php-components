@@ -25,4 +25,5 @@
                 // ['label' => 'Contact', 'href' => '/contact', 'class' => 'text-gray-700 hover:text-blue-600 transition px-4 py-2'],
             ], 'flex items-center space-x-4 bg-white p-4 rounded-lg shadow-md');
         ?>
+    </div>
 </div>
