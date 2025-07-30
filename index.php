@@ -313,5 +313,6 @@
         ?>
     </div>
 
+    <?php include($path_to_root.'footer.php'); ?>
 </body>
 </html>

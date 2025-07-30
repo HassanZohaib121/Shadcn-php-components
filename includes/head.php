@@ -13,6 +13,6 @@ include_once($path_to_root.'components/navbar.php');
   <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 
 </head>
-<body class='mx-[10%] mt-[2%] mb-[10%] bg-background text-foreground'>
+<body class='mt-[2%] mb-[10%] bg-background text-foreground h-screen'>
 
  <?php include($path_to_root.'Navbar.php'); ?>
