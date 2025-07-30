@@ -20,8 +20,8 @@ include_once($path_to_root.'components/label.php');
         </div>
     </div>
 
-        <h2 class="text-lg font-bold text-center mt-8">Label Code</h2>
-    <div class="p-4 border bg-gray-200 rounded-lg">
+    <h2 class="text-lg font-bold text-center mt-8">Input Code</h2>
+    <div class="p-4 border bg-gray-200 rounded-lg mx-[10%] mt-[2%] mb-[10%]">
         <?php
             $code = <<<'CODE'
             <?php
@@ -71,6 +71,8 @@ include_once($path_to_root.'components/label.php');
         </div>
     </div>
 
+    <?php include($path_to_root.'footer.php'); ?>
+
     <script>
         function copyCode() {
             const code = document.getElementById('code-block').innerText;
@@ -94,5 +96,6 @@ include_once($path_to_root.'components/label.php');
             });
         }
     </script>
+
 </body>
 </html>

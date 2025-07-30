@@ -30,7 +30,7 @@ include_once($path_to_root.'components/newDialog.php');
     </div>  
 
     <h2 class="text-lg font-bold text-center mt-8">New Dialog Code</h2>
-    <div class="p-4 border bg-gray-200 rounded-lg">
+    <div class="p-4 border bg-gray-200 rounded-lg mx-[10%] mt-[2%] mb-[10%]">
         <?php
             $code = <<<'CODE'
             <?php
@@ -143,6 +143,8 @@ include_once($path_to_root.'components/newDialog.php');
             </pre>
         </div>
     </div>
+
+    <?php include($path_to_root.'footer.php'); ?>
 
     <script>
         function copyCode() {
