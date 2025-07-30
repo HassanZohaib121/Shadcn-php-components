@@ -1,30 +1,62 @@
 <?php
-include 'head.php';
-include 'components/button.php';
-include_once 'components/badge.php';
-include_once 'components/card.php';
-include_once 'components/input.php';
-include_once 'components/label.php';
-include_once 'components/navbar.php';
-include_once 'components/nav.php';
-include_once 'components/toaster.php';
-include_once 'components/combobox.php';
+    if (!isset($path_to_root)) {
+        $path_to_root = "";
+    }
+    include($path_to_root.'includes/head.php');
+    include($path_to_root.'components/button.php');
+    include_once($path_to_root.'components/badge.php');
+    include_once($path_to_root.'components/input.php');
+    include_once($path_to_root.'components/label.php');
+    include_once($path_to_root.'components/navbar.php');
+    // include_once($path_to_root.'components/nav.php');
+    include_once($path_to_root.'components/toaster.php');    
+    include_once($path_to_root.'components/combobox.php');
 
-// include_once 'components/dialog.php';
-include_once 'components/newDialog.php';
+    // include_once($path_to_root.'components/dialog.php');
+    include_once($path_to_root.'components/newDialog.php');
 
- echo renderDialog([
-    'onclick' => 'alert(\'Item deleted\')',
-    'title' => 'Dialog Title',
-    'description' => 'Dialog Description',
-    'content' => '<p>Dialog Content</p>',
-    'confirmButton' => 'Confirm',
-    'cancelButton' => 'Cancel'
-]);
+
+    echo renderDialog([
+        'onclick' => 'alert(\'Item deleted\')',
+        'title' => 'Dialog Title',
+        'description' => 'Dialog Description',
+        'content' => '<p>Dialog Content</p>',
+        'confirmButton' => 'Confirm',
+        'cancelButton' => 'Cancel'
+    ]);
 
 ?>
 
+<!-- Navigation Menu -->
+<div class="flex flex-col justify-center items-center align-middle gap-3 mb-6 -mt-3">
+    <!-- <h2 class="text-lg font-bold ">Navigation Menu </h2> -->
+    <div class="flex flex-row justify-center items-center gap-3">
+        <?php
+            // echo renderNavMenu([
+            //     ['label' => 'Home', 'href' => '/', 'class' => 'text-gray-700 hover:text-blue-600 transition px-4 py-2'],
+            //     ['label' => 'Card', 'href' =>  $path_to_root.'card', 'class' => 'text-gray-700 hover:text-blue-600 transition px-4 py-2'],
+            //     [
+            //         'label' => 'Components',
+            //         'href' => '',
+            //         'class' => 'text-gray-700 hover:text-blue-600 transition px-4 py-2 relative group cursor-pointer',
+            //         'submenu' => [
+            //             ['label' => 'Catd', 'href' => $path_to_root.'card', 'class' => 'block px-4 py-2 text-sm text-gray-600 hover:bg-gray-100'],
+            //             ['label' => 'Button', 'href' => $path_to_root.'button', 'class' => 'block px-4 py-2 text-sm text-gray-600 hover:bg-gray-100'],
+            //             ['label' => 'Badge', 'href' => $path_to_root.'badge', 'class' => 'block px-4 py-2 text-sm text-gray-600 hover:bg-gray-100'],
+            //             ['label' => 'Input', 'href' => $path_to_root.'input', 'class' => 'block px-4 py-2 text-sm text-gray-600 hover:bg-gray-100'],
+            //             ['label' => 'Label', 'href' => $path_to_root.'label', 'class' => 'block px-4 py-2 text-sm text-gray-600 hover:bg-gray-100'],
+            //             ['label' => 'Dialog', 'href' => $path_to_root.'dialog', 'class' => 'block px-4 py-2 text-sm text-gray-600 hover:bg-gray-100'],
+            //             ['label' => 'New Dialog', 'href' => $path_to_root.'new-dialog', 'class' => 'block px-4 py-2 text-sm text-gray-600 hover:bg-gray-100'],
+            //         ],
+            //         'submenuClass' => 'absolute left-0 mt-2 hidden group-hover:block bg-white shadow-lg rounded-md z-50 min-w-[180px]'
+            //     ],
+            //     ['label' => 'Contact', 'href' => '/contact', 'class' => 'text-gray-700 hover:text-blue-600 transition px-4 py-2'],
+            // ], 'flex items-center space-x-4 bg-white p-4 rounded-lg shadow-md');
+        ?>
+</div>
+
     <h1 class="text-3xl font-bold text-center mb-5">Shadcn PHP Components</h1>
+
 
     <!-- Button -->
     <div class="flex flex-col justify-center items-center align-middle gap-3 mb-5">
@@ -35,7 +67,7 @@ include_once 'components/newDialog.php';
                     'variant' => 'default',
                     'size' => 'default',
                     'content' => 'Click Me',
-                    'onclick' => 'sayHello()',
+                    'onclick' => 'alert("Hello from the button!")',
                     'id' => 'myButton',
                     'class' => '',
                 ]);    
@@ -98,76 +130,6 @@ include_once 'components/newDialog.php';
             ]);
             ?>
         </div>
-    </div>
-
-    <!-- Card -->
-    <div class="flex flex-col justify-center items-center align-middle gap-3 mb-5">
-        <h2 class="text-lg font-bold ">Card </h2>
-
-        <?php
-            echo renderCard([
-                'class' => 'w-full max-w-sm',
-                'content' =>
-                renderCardHeader([
-                    'content' =>
-                        renderCardTitle(['content' => 'Login to your account']) .
-                        renderCardDescription(['content' => 'Enter your email below to login to your account']) .
-                        renderCardAction([
-                            'content' => renderButton([
-                                'variant' => 'link',
-                                'content' => 'Sign Up',
-                            ])
-                        ])
-                ]) .
-                renderCardContent([
-                    'content' =>
-                        '<form>' .
-                        '<div class="flex flex-col gap-6">' .
-
-                            // Email
-                            '<div class="grid gap-2">' .
-                                renderLabel(['for' => 'email', 'content' => 'Email']) .
-                                renderInput([
-                                    'id' => 'email',
-                                    'type' => 'email',
-                                    'placeholder' => 'm@example.com',
-                                    'required' => true
-                                ]) .
-                            '</div>' .
-
-                            // Password
-                            '<div class="grid gap-2">' .
-                                '<div class="flex items-center">' .
-                                    renderLabel(['for' => 'password', 'content' => 'Password']) .
-                                    '<a href="#" class="ml-auto inline-block text-sm underline-offset-4 hover:underline">Forgot your password?</a>' .
-                                '</div>' .
-                                renderInput([
-                                    'id' => 'password',
-                                    'type' => 'password',
-                                    'placeholder' => 'Password',
-                                    'required' => true
-                                ]) .
-                            '</div>' .
-
-                        '</div>' .
-                        '</form>'
-                ]) .
-                renderCardFooter([
-                    'class' => 'flex-col gap-2',
-                    'content' =>
-                        renderButton([
-                            'type' => 'submit',
-                            'content' => 'Login',
-                            'class' => 'w-full'
-                        ]) .
-                        renderButton([
-                            'variant' => 'outline',
-                            'content' => 'Login with Google',
-                            'class' => 'w-full'
-                        ])
-                ])
-            ]);
-        ?>
     </div>
 
     <!-- Input -->
@@ -246,30 +208,7 @@ include_once 'components/newDialog.php';
                 ]);            
             ?>
         </div>
-    </div>
-
-    <!-- Navigation Menu -->
-    <div class="flex flex-col justify-center items-center align-middle gap-3 mb-5">
-        <h2 class="text-lg font-bold ">Navigation Menu </h2>
-        <div class="flex flex-row justify-center items-center gap-3">
-            <?php
-                echo renderNavMenu([
-                    ['label' => 'Home', 'href' => '/', 'class' => 'text-gray-700 hover:text-blue-600 transition px-4 py-2'],
-                    ['label' => 'About', 'href' => '/about', 'class' => 'text-gray-700 hover:text-blue-600 transition px-4 py-2'],
-                    [
-                        'label' => 'Services',
-                        'href' => '',
-                        'class' => 'text-gray-700 hover:text-blue-600 transition px-4 py-2 relative group cursor-pointer',
-                        'submenu' => [
-                            ['label' => 'Web Development', 'href' => '/services/web', 'class' => 'block px-4 py-2 text-sm text-gray-600 hover:bg-gray-100'],
-                            ['label' => 'SEO', 'href' => '/services/seo', 'class' => 'block px-4 py-2 text-sm text-gray-600 hover:bg-gray-100'],
-                        ],
-                        'submenuClass' => 'absolute left-0 mt-2 hidden group-hover:block bg-white shadow-lg rounded-md z-50 min-w-[180px]'
-                    ],
-                    ['label' => 'Contact', 'href' => '/contact', 'class' => 'text-gray-700 hover:text-blue-600 transition px-4 py-2'],
-                ], 'flex items-center space-x-4 bg-white p-4 rounded-lg shadow-md');
-            ?>
-    </div>
+    </div>    
 
     <!-- Toaster -->
     <div class="flex flex-col justify-center items-center align-middle gap-3 mb-5">
@@ -302,35 +241,36 @@ include_once 'components/newDialog.php';
     </div>
 
     <!-- Combobox -->
-        <div class="flex flex-col justify-center items-center align-middle gap-3 mb-5">
-            <h2 class="text-lg font-bold ">Combobox </h2>
-            <div class="flex flex-row justify-center items-center gap-3">
-                <?php
-                    echo renderCombobox([
-                        'label' => 'Select framework',
-                        'class' => 'relative w-52 text-green-600',
-                        'options' => [
-                            ['value' => 'next.js', 'label' => 'Next.js'],
-                            ['value' => 'sveltekit', 'label' => 'SvelteKit'],
-                            ['value' => 'nuxt.js', 'label' => 'Nuxt.js'],
-                            ['value' => 'remix', 'label' => 'Remix'],
-                            ['value' => 'astro', 'label' => 'Astro'],
-                        ]
-                    ]);
-                    echo renderCombobox([
-                        'label' => 'Select framework',
-                        'class' => 'relative w-52 text-red-500',
-                        'options' => [
-                            ['value' => 'next.js', 'label' => 'Next.js'],
-                            ['value' => 'sveltekit', 'label' => 'SvelteKit'],
-                            ['value' => 'nuxt.js', 'label' => 'Nuxt.js'],
-                            ['value' => 'remix', 'label' => 'Remix'],
-                            ['value' => 'astro', 'label' => 'Astro'],
-                        ]
-                    ]);
-                ?>
-            </div>
+    <div class="flex flex-col justify-center items-center align-middle gap-3 mb-5">
+        <h2 class="text-lg font-bold ">Combobox </h2>
+        <div class="flex flex-row justify-center items-center gap-3">
+            <?php
+                echo renderCombobox([
+                    'label' => 'Select framework',
+                    'class' => 'relative w-52 text-green-600',
+                    'options' => [
+                        ['value' => 'next.js', 'label' => 'Next.js'],
+                        ['value' => 'sveltekit', 'label' => 'SvelteKit'],
+                        ['value' => 'nuxt.js', 'label' => 'Nuxt.js'],
+                        ['value' => 'remix', 'label' => 'Remix'],
+                        ['value' => 'astro', 'label' => 'Astro'],
+                    ]
+                ]);
+                echo renderCombobox([
+                    'label' => 'Select framework',
+                    'class' => 'relative w-52 text-red-500',
+                    'options' => [
+                        ['value' => 'next.js', 'label' => 'Next.js'],
+                        ['value' => 'sveltekit', 'label' => 'SvelteKit'],
+                        ['value' => 'nuxt.js', 'label' => 'Nuxt.js'],
+                        ['value' => 'remix', 'label' => 'Remix'],
+                        ['value' => 'astro', 'label' => 'Astro'],
+                    ]
+                ]);
+            ?>
         </div>
     </div>
+
+
 </body>
 </html>

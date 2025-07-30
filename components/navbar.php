@@ -25,10 +25,11 @@ function renderNavMenu($items = [], $class = '') {
     if ($hasSubmenu) {
       // Invisible padding container helps cursor travel without losing hover state
       $html .= '
-      <div class="absolute left-0 top-full pt-2 z-10">
-        <ul class="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-200 ease-in-out bg-white shadow-lg w-44"
-             onmouseenter="this.classList.add(\'visible\', \'opacity-100\')"
-             onmouseleave="this.classList.remove(\'visible\', \'opacity-100\')">';
+      <div class="absolute left-0 top-full pt-2 z-10 invisible"
+            onmouseenter="this.classList.add(\'visible\', \'opacity-100\')"
+             onmouseleave="this.classList.remove(\'visible\', \'opacity-100\')"
+      >
+        <ul class="group-hover:visible group-hover:opacity-100 transition-all duration-200 ease-in-out bg-white shadow-lg w-44 z-50">';
 
       foreach ($submenu as $sub) {
         $subLabel = htmlspecialchars($sub['label']);
