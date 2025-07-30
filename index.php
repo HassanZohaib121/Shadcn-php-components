@@ -11,6 +11,7 @@
     // include_once($path_to_root.'components/nav.php');
     include_once($path_to_root.'components/toaster.php');    
     include_once($path_to_root.'components/combobox.php');
+    include_once($path_to_root.'components/card.php');
 
     // include_once($path_to_root.'components/dialog.php');
     include_once($path_to_root.'components/newDialog.php');
@@ -27,36 +28,7 @@
 
 ?>
 
-<!-- Navigation Menu -->
-<div class="flex flex-col justify-center items-center align-middle gap-3 mb-6 -mt-3">
-    <!-- <h2 class="text-lg font-bold ">Navigation Menu </h2> -->
-    <div class="flex flex-row justify-center items-center gap-3">
-        <?php
-            // echo renderNavMenu([
-            //     ['label' => 'Home', 'href' => '/', 'class' => 'text-gray-700 hover:text-blue-600 transition px-4 py-2'],
-            //     ['label' => 'Card', 'href' =>  $path_to_root.'card', 'class' => 'text-gray-700 hover:text-blue-600 transition px-4 py-2'],
-            //     [
-            //         'label' => 'Components',
-            //         'href' => '',
-            //         'class' => 'text-gray-700 hover:text-blue-600 transition px-4 py-2 relative group cursor-pointer',
-            //         'submenu' => [
-            //             ['label' => 'Catd', 'href' => $path_to_root.'card', 'class' => 'block px-4 py-2 text-sm text-gray-600 hover:bg-gray-100'],
-            //             ['label' => 'Button', 'href' => $path_to_root.'button', 'class' => 'block px-4 py-2 text-sm text-gray-600 hover:bg-gray-100'],
-            //             ['label' => 'Badge', 'href' => $path_to_root.'badge', 'class' => 'block px-4 py-2 text-sm text-gray-600 hover:bg-gray-100'],
-            //             ['label' => 'Input', 'href' => $path_to_root.'input', 'class' => 'block px-4 py-2 text-sm text-gray-600 hover:bg-gray-100'],
-            //             ['label' => 'Label', 'href' => $path_to_root.'label', 'class' => 'block px-4 py-2 text-sm text-gray-600 hover:bg-gray-100'],
-            //             ['label' => 'Dialog', 'href' => $path_to_root.'dialog', 'class' => 'block px-4 py-2 text-sm text-gray-600 hover:bg-gray-100'],
-            //             ['label' => 'New Dialog', 'href' => $path_to_root.'new-dialog', 'class' => 'block px-4 py-2 text-sm text-gray-600 hover:bg-gray-100'],
-            //         ],
-            //         'submenuClass' => 'absolute left-0 mt-2 hidden group-hover:block bg-white shadow-lg rounded-md z-50 min-w-[180px]'
-            //     ],
-            //     ['label' => 'Contact', 'href' => '/contact', 'class' => 'text-gray-700 hover:text-blue-600 transition px-4 py-2'],
-            // ], 'flex items-center space-x-4 bg-white p-4 rounded-lg shadow-md');
-        ?>
-</div>
-
     <h1 class="text-3xl font-bold text-center mb-5">Shadcn PHP Components</h1>
-
 
     <!-- Button -->
     <div class="flex flex-col justify-center items-center align-middle gap-3 mb-5">
@@ -165,34 +137,35 @@
         <h2 class="text-lg font-bold ">Dialog </h2>
         <div class="flex flex-row justify-center items-center gap-3">
             <!-- Trigger Button -->
-        <?php
-            echo renderButton([
-            'text' => 'Open Dialog',
-            'variant' => 'default',
-            'onclick' => 'openDialog_myDialog()',
-            ]);
-        ?>
+            <?php
+                echo renderButton([
+                'text' => 'Open Dialog',
+                'variant' => 'default',
+                'onclick' => 'openDialog_myDialog()',
+                ]);
+            ?>
 
-        <!-- Render Dialog -->
-        <?php
-            echo renderDialog(
-                'myDialog',
-                'Confirm Action',
-                'Are you sure you want to proceed?',
-                '<p>This action cannot be undone.</p>',
-                renderButton([
-                    'text' => 'Cancel',
-                    'variant' => 'secondary',
-                    'onclick' => 'closeDialog_myDialog()',
-                ]) .
-                renderButton([
-                    'text' => 'Confirm',
-                    'variant' => 'danger',
-                    'onclick' => 'alert(\'Action confirmed.\'); closeDialog_myDialog()',
-                    'class' => 'ml-2'
-                ])
-            );
-        ?>
+            <!-- Render Dialog -->
+            <?php
+                echo renderDialog(
+                    'myDialog',
+                    'Confirm Action',
+                    'Are you sure you want to proceed?',
+                    '<p>This action cannot be undone.</p>',
+                    renderButton([
+                        'text' => 'Cancel',
+                        'variant' => 'secondary',
+                        'onclick' => 'closeDialog_myDialog()',
+                    ]) .
+                    renderButton([
+                        'text' => 'Confirm',
+                        'variant' => 'danger',
+                        'onclick' => 'alert(\'Action confirmed.\'); closeDialog_myDialog()',
+                        'class' => 'ml-2'
+                    ])
+                );
+            ?>
+        </div>
     </div>
 
     <!-- New Dialog -->
@@ -271,6 +244,74 @@
         </div>
     </div>
 
+    <!-- Card -->
+    <div class="flex flex-col justify-center items-center align-middle gap-3 mb-5">
+        <h2 class="text-lg font-bold ">Card </h2>
+        <?php
+            echo renderCard([
+                'class' => 'w-full max-w-sm',
+                'content' =>
+                renderCardHeader([
+                    'content' =>
+                        renderCardTitle(['content' => 'Login to your account']) .
+                        renderCardDescription(['content' => 'Enter your email below to login to your account']) .
+                        renderCardAction([
+                            'content' => renderButton([
+                                'variant' => 'link',
+                                'content' => 'Sign Up',
+                            ])
+                        ])
+                ]) .
+                renderCardContent([
+                    'content' =>
+                        '<form>' .
+                        '<div class="flex flex-col gap-6">' .
+
+                            // Email
+                            '<div class="grid gap-2">' .
+                                renderLabel(['for' => 'email', 'content' => 'Email']) .
+                                renderInput([
+                                    'id' => 'email',
+                                    'type' => 'email',
+                                    'placeholder' => 'm@example.com',
+                                    'required' => true
+                                ]) .
+                            '</div>' .
+
+                            // Password
+                            '<div class="grid gap-2">' .
+                                '<div class="flex items-center">' .
+                                    renderLabel(['for' => 'password', 'content' => 'Password']) .
+                                    '<a href="#" class="ml-auto inline-block text-sm underline-offset-4 hover:underline">Forgot your password?</a>' .
+                                '</div>' .
+                                renderInput([
+                                    'id' => 'password',
+                                    'type' => 'password',
+                                    'placeholder' => 'Password',
+                                    'required' => true
+                                ]) .
+                            '</div>' .
+
+                        '</div>' .
+                        '</form>'
+                ]) .
+                renderCardFooter([
+                    'class' => 'flex-col gap-2',
+                    'content' =>
+                        renderButton([
+                            'type' => 'submit',
+                            'content' => 'Login',
+                            'class' => 'w-full'
+                        ]) .
+                        renderButton([
+                            'variant' => 'outline',
+                            'content' => 'Login with Google',
+                            'class' => 'w-full'
+                        ])
+                ])
+            ]);
+        ?>
+    </div>
 
 </body>
 </html>
